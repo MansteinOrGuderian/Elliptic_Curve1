@@ -37,7 +37,7 @@
 \theoremstyle{definition}
 \newtheorem*{remark}{Зауваження:}
 \newtheorem*{example}{Приклад}
-\newtheorem{lemma}{Лема}[chapter] 
+\newtheorem{lemma}{Лема}[chapter]
 
 \renewcommand*{\proofname}{Доведення:}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
@@ -49,9 +49,9 @@
   \tikz[baseline={(textnode.base)}]{
     \draw[decorate, decoration={snake, segment length=0.35cm, amplitude=1.5pt}] % Left wave line
     (0,0) -- ++(0,1.5);
-    
+
     \node[anchor=base west, inner sep = 0.5pt] (textnode) at (0.15,0.75) {#1}; % Text node
-    
+
     \draw[decorate, decoration={snake, segment length=0.35cm, amplitude=1.5pt}] % Right wave line
     ([xshift=0.2cm, yshift=-0.75cm]textnode.east) -- ++(0,1.5);
   }
