@@ -328,7 +328,7 @@ int main() {
 	//
 	//std::cout << '\n';
 	std::vector<Point> Ps_vector;
-	Point P(36, 60);
+	Point P(36, 571);
 	std::cout << "P " << P << '\n';
 	Ps_vector.push_back(P);
 	Point P2 = x2_30x_34.double_Point(P);
@@ -358,7 +358,7 @@ int main() {
 	std::cout << '\n';*/
 
 	std::vector<Point> Qs_vector;
-	Point Q(121, 387); // Q (121, 244)
+	Point Q(420, 48); // Q (121, 244)
 	std::cout << "Q " << Q << '\n';
 	Qs_vector.push_back(Q);
 	Point Q2 = x2_30x_34.double_Point(Q);

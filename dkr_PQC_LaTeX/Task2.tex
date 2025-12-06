@@ -7,7 +7,8 @@
 \begin{enumerate}
     \item Перевірити, що точки $P = (36, 571)$ та $Q = (420, 48)$ належать ЕК;
     \item Перевірити, що обидві точки мають порядок $5$ і породжують підгрупу точок експоненти $5$
-    \item Обчислити значення спарювання Вейля $w_{5} (P, Q)$ та перевірити, що отримане значення є коренем 5 степеня з 1.
+    \item Обчислити значення спарювання Вейля $w_{5} (P, Q)$ та перевірити, що отримане значення є коренем 5 
+        степеня з 1.
 \end{enumerate}
 
 \section*{Розв'язання:}
@@ -27,5 +28,343 @@
 \end{align*}
 Як бачимо, точки належать еліптичній кривій. Для перевірки порядку 5 цих точок, треба обчислити точки $2P$, $3P$, $4P$, 
 $5P$ та $2Q$, $3Q$, $4Q$, $5Q$ відповідно і переконатися що $5P = 5Q = \mathcal{O}$. Для зручності обчислень покладемо 
-точку на нескінченності рівною $(0, 0)$: $\mathcal{O} = (0, 0)$. Це нам ніщо не забороняє зробити, оскільки $(0, 0)$ не належить заданій 
-ЕК.
+точку на нескінченності рівною $(0, 0)$: $\mathcal{O} = (0, 0)$. Це нам ніщо не забороняє зробити, оскільки $(0, 0)$ не 
+належить заданій ЕК.
+
+Суму точок обчислюємо за формулою: %% ! код?
+\begin{equation*}
+\left\{
+    \begin{aligned}
+        & x_{P+Q} = \left(\frac{y_1 - y_2}{x_1 - x_2}\right)^{2} - x_1 - x_3 \\
+        & y_{P+Q} = \left(\frac{y_1 - y_2}{x_1 - x_2}\right) \cdot \left(x_1 - x_3\right) - y_1
+    \end{aligned}
+\right.
+\end{equation*}
+Подвоєння точки:
+\begin{equation*}
+\left\{
+    \begin{aligned}
+        & x_{2P} = \left(\frac{3x_{1}^{2} + a}{2y_1}\right)^{2} - 2x_{1} \\
+        & y_{2P} = \left(\frac{3x_{1}^{2} + a}{2y_1}\right) \cdot \left(x_1 - x_3\right) - y_1
+    \end{aligned}
+\right.
+\end{equation*}
+Мінус точка:
+\begin{equation*}
+    x_{-P} = x_{P} \quad y_{-P} = - y_{P}
+\end{equation*}
+Маємо:
+\begin{align*}
+    & P (36, 571) &\quad & Q (420, 48) \\
+    & 2P (617, 5) &\quad & 2Q (121, 387) \\
+    & 3P (617, 626) &\quad & 3Q (121, 244) \\
+    & 4P (36, 60) &\quad & 4Q (420, 583) \\
+    & 5P (0, 0) &\quad & 5Q (0, 0)
+\end{align*}
+
+Чи породжують $P$ і $Q$ підгрупу експоненти порядку 5? Для цього візьмемо якусь умовну точку 
+$S = \alpha P + \beta Q$ з цієї підгрупи, де $\alpha, \beta \in \mathbb{N} [0, 5)$. Знайдемо всі точки:
+
+\begin{align*}
+& P (36, 571), 2P (617, 5), 3P (617, 626), 4P (36, 60) \\
+& Q (420, 48), 2Q (121, 387), 3Q (121, 244), 4Q (420, 583) \\
+& 5P = 5Q = \mathcal{O} = (0, 0) \text{ -- точка на нескінченності} \\
+& P +  Q = (36, 571) + (420, 48) = (575, 7) \\
+& P + 2Q = (36, 571) + (121, 387) = (531, 18) \\
+& P + 3Q = (36, 571) + (121, 244) = (595, 221) \\
+& P + 4Q = (36, 571) + (420, 583) = (289, 269) \\
+& 2P +  Q = (617, 5) + (420, 48) = (586, 584) \\
+& 2P + 2Q = (617, 5) + (121, 387) = (428, 25) \\
+& 2P + 3Q = (617, 5) + (121, 244) = (511, 608) \\
+& 2P + 4Q = (617, 5) + (420, 583) = (339, 499) \\
+& 3P +  Q = (617, 626) + (420, 48) = (339, 132) \\
+& 3P + 2Q = (617, 626) + (121, 387) = (511, 23) \\
+& 3P + 3Q = (617, 626) + (121, 244) = (428, 606) \\
+& 3P + 4Q = (617, 626) + (420, 583) = (586, 47) \\
+& 4P +  Q = (36, 60) + (420, 48) = (289, 362) \\
+& 4P + 2Q = (36, 60) + (121, 387) = (595, 410) \\
+& 4P + 3Q = (36, 60) + (121, 244) = (531, 613) \\
+& 4P + 4Q = (36, 60) + (420, 583) = (575, 624)
+\end{align*}
+Усього можливих точок підгрупи експоненти 5 -- 25 штук.
+
+\noindent 5, це мається на увазі, що кожен елемент з цієї множини матиме порядок кратний 5. Перевірити це легко, 
+можна взяти точку $5S$ і переконатися чи вона рівна $\mathcal{O}$.
+\begin{equation*}
+    5S =  5 \cdot(\alpha P + \beta Q) = 5 \cdot \alpha P + 5 \cdot \beta Q = \MakeWaveComment{$\substack{\alpha, \beta, 5 \\ \text{звичайні числа}}$} 
+    = \alpha \cdot (5P) + \beta \cdot (5Q) = \alpha \cdot \mathcal{O} + \beta \cdot \mathcal{O} = \mathcal{O}.
+\end{equation*}
+
+\noindent Бачимо, що кожен елемент у підгрупі зануляється при множенні на 5, тобто ці точки породжують підгрупу 
+точок експоненти 5.
+
+Значення спарювання Вейля $w_5(P, Q)$ обчислюємо формулою:
+\begin{equation*}
+    w_5(P, Q) = \frac{f_{5,P}(Q+R)/ f_{5,P}(R)}{f_{5,Q}(P-R) / f_{5,Q}(-R)}
+\end{equation*}
+Для цього зафіксуємо точку $R = (0, 36)$, що не лежить в підгрупі (з попереднього списку явно видно, що вона не 
+знаходиться), і використавши алгоритм Міллера знайдемо ці чотири невідомі значення:
+\begin{equation*}
+    f_{5,P}(Q + R), \quad f_{5,P}(R), \quad f_{5,Q}(P - R), \quad f_{5,Q}(-R)
+\end{equation*}
+
+\begin{algorithm}[H]
+    \caption{Алгоритм Міллера}
+    \begin{algorithmic}[1]
+        \Require $n \in \mathbb{N}$, $P \in E$, $D$ --- дівізор, для якого $\mathrm{supp}(D) \cap \{P, 0\} = \emptyset$.
+        \Ensure $f_{n,P}(D)$.
+
+        \State Знаходимо бінарний розклад числа $n$:
+        \begin{equation*}
+            n = \sum_{j=0}^{L} n_j \cdot 2^j, \quad n_j \in \{0, 1\}, \quad n_L = 1
+        \end{equation*}
+
+        \State \textbf{Ініціалізація:}
+        \Statex $T = P$
+        \Statex $f = 1$
+
+        \For{($j = L - 1; j \geq 0; j--$)}
+        \State $f = f^2 \cdot \frac{I_{T,T}(D)}{v_{[2]T}(D)}$
+        \State $T = [2]T$
+        \If{$n_j = 1$}
+        \State $f = f \cdot \frac{I_{T,P}(D)}{v_{T+P}(D)}$
+        \State $T = T + P$
+        \EndIf
+        \EndFor
+
+        \State \Return $f$
+    \end{algorithmic}
+\end{algorithm}
+\newpage
+\begin{itemize}
+    \item $I_{P,P}$ -- пряма, яка є дотичною до ЕК в точці $P$.
+    \item $I_{P,Q}$ -- пряма, що проходить через точки $P$, $Q$, $P \neq Q$.
+    \item $v_{P}$ -- вертикальна пряма через точку $P$
+\end{itemize}
+Спершу зрозуміємо, як обраховувати кожну з прямих:
+\begin{enumerate}
+    \item $I_{P,P} (D)$ \\
+        Рівняння дотичної до ЕК має вигляд: $y - y_{P} = \lambda \cdot (x - x_{P})$
+        Це схоже на формулу для $y$-координати $2P$, але є один нюанс: точка $2P$, на еліптичній кривій -- це 
+        відбиття точки перетину дотичної з кривою відносно вісі $X$, тобто $(x_{2P}, -y_{2P}) \to (x_{2P}, y_{2P})$. 
+        Якщо підставити точку $2P$ в це рівняння, то можна отримати відому формулу для $y_{2P}$:
+        \begin{equation*}
+            -y_{2P} - y_{P} = \lambda \cdot (x_{2P} -  x_{P}) \Rightarrow y_{2P} = \lambda \cdot (x_{P} - x_{2P}) - y_{P},
+        \end{equation*}
+        де $\lambda = \frac{3x_{P}^{2} + a}{2 y_{P}}$.
+
+        Повертаючись до того, з чого починали, замінимо $P$ на $T$, перенесемо все в одну сторону і перегруповуємо:
+        $y - y_{T} - \lambda x + \lambda x_{T} = y - \lambda x + \left(\lambda x_{T} - y_{T}\right)$ \\
+        Остаточно маємо:
+        \begin{equation*}
+            I_{T,T} (D) = y - y_{T} - \lambda x + \lambda x_{T} = y_{D} - \lambda x_{D} + \left(\lambda x_{T} - y_{T}\right)
+        \end{equation*}
+    \item $I_{P,Q} (D)$ \\
+        Тут аналогічна ситуація. Рівняння січної до ЕК має вигляд $y - y_{P} = \lambda \cdot (x -  x_{P})$
+        Це схоже на формулу для $y$-координати $P+Q$, але такий самий нюанс: точка перетину вже січною еліптичної 
+        кривої має відбитися відносно вісі $X$, тобто $(x_{P+Q}, -y_{P+Q}) \to (x_{P+Q}, y_{P+Q})$ -- будуть справжніми 
+        координатами $P+Q$. В цьому можна переконатися, якщо підставити точку $P+Q$ в це рівняння, то можна отримати 
+        вже формулу для $y_{P+Q}$:
+        \begin{equation*}
+            -y_{P+Q} - y_{P} = \lambda \cdot (x_{P+Q} -  x_{P}) \Rightarrow y_{P+Q} = \lambda \cdot (x_{P} - x_{P+Q}) - y_{P},
+        \end{equation*}
+        де $\lambda = \frac{y_{P} - y_{Q}}{x_{P} - y_{Q}}$.
+
+        Повернемось до рівняння січної. Перенесемо все в одну сторону і перегрупуємо:
+        $y - y_{T+P} - \lambda x + \lambda x_{T+P} = 0 \Rightarrow y - \lambda x + \left(\lambda x_{T+P} - y_{T+P}\right)$ \\
+        Остаточно маємо:
+        \begin{equation*}
+            I_{T, P} (D) = y_{D} - \lambda x_{D} + \left(\lambda x_{T+P} - y_{T+P}\right)
+        \end{equation*}
+    \item $v_{P} (D)$ Рівняння вертикальної прямої це: $x - x_{P} = 0$.
+    У нас в алгоритмі є два випадки $v_{2T} (D)$ і $v_{T+P} (D)$:
+    \begin{itemize}
+        \item Якщо $v_{2T} (D)$, то відповідно пряма $x - x_{2T} = 0$, $x_{2T} = 
+            \underbrace{\left(\frac{3x_{T}^{2} + a}{2 y_{T}}\right)^{2}}_{\lambda^{2}} - 2 x_{T} = \lambda^{2} - 2 x_{T}$, 
+            підставляючи одне в інше, маємо: $v_{2T} (D) = x_{D} - (\lambda^{2} - 2 x_{T})$
+        \item Якщо $v_{T+P} (D)$, то пряма має вигляд: $x - x_{T+P} = 0$, 
+            $x_{T+P} = \underbrace{\left(\frac{y_{T} - y_{P}}{x_{T} - x_{P}}\right)^{2}}_{\lambda^{2}} - x_{T} - x_{P} = \lambda^{2} - x_{T} - x_{P}$.
+            підставляючи одне в інше, маємо: $v_{T+P} (D) = x_{D} - (\lambda^{2} - x_{T} - x_{P})$
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+У нас $n = 5_{10} = 101_{2} \Rightarrow L = 2$ (індекс старшого біту), тобто $L-1 = 1$. Алгоритм матиме $2$ кроки, 
+оскільки ініціалізацією $T = P$ ми враховуємо старший біт $n_{L} = 1$.
+\begin{enumerate}[label=\textbf{Ітерація \No \theenumi}, leftmargin=*]
+    \item
+        \begin{align*}
+            & I_{T,T} (D) = y_{D} - \lambda x_{D} + \left(\lambda x_{T} - y_{T}\right) \Mod{631}, \quad \lambda = \frac{3x_{T}^{2} + a}{2 y_{T}} \\
+            & v_{2T} (D) = x_{D} - (\lambda^{2} - 2 x_{T}) \Mod{631}, \quad \lambda = \frac{3x_{T}^{2} + a}{2 y_{T}} \\
+            & f = f^{2} \cdot \frac{I_{T,T} (D)}{V_{[2]T}(D)} \Mod{631} \\
+            & T = [2]T, \quad n_{1} = 0, \text{ тому continue} \\
+        \end{align*}
+    \item
+        \begin{align*}
+            & I_{T,T} (D) = y_{D} - \lambda x_{D} + \left(\lambda x_{T} - y_{T}\right) \Mod{631}, \quad \lambda = \frac{3x_{T}^{2} + a}{2 y_{T}} \\
+            & v_{2T} (D) = x_{D} - (\lambda^{2} - 2 x_{T}) \Mod{631}, \quad \lambda = \frac{3x_{T}^{2} + a}{2 y_{T}} \\
+            & f = f^{2} \cdot \frac{I_{T,T} (D)}{V_{[2]T}(D)} \Mod{631} \\
+            & T = [2]T, \quad n_{0} = 1, \text{ тому :} \\
+            & I_{T, P} (D) = y_{D} - \lambda x_{D} + \left(\lambda x_{T+P} - y_{T+P}\right) \Mod{631}, \quad \lambda = \frac{y_{T} - y_{P}}{x_{T} - y_{P}} \\
+            & v_{T+P} (D) = x_{D} - (\lambda^{2} - x_{T} - x_{P}) \Mod{631}, \quad \lambda = \frac{y_{T} - y_{P}}{x_{T} - x_{P}} \\
+            & f = f \cdot \frac{I_{T, P} (D)}{v_{T+P} (D)} \Mod{631} \\
+            & T = T + P
+        \end{align*}
+    \item[] \textbf{Return:} $f_{5, P} (D)$
+\end{enumerate}
+
+\newpage
+\noindent\textbf{\textit{Обчислимо $f_{5,P}(Q + R)$}}
+
+Вхідні дані:
+
+Вхідні дані:
+$Q (420, 48)$, $R (0, 36)$, $D = Q + R = (535, 129)$, $a = 30$, $\mathrm{mod} = 631$;
+
+Ініціалізація:
+$T = P = (36, 571)$, $f = 1$
+
+\begin{enumerate}[label=\textbf{Ітерація \No\arabic*.}, leftmargin=*]
+    \item $j = 1$, $n_1 = 0$
+        \begin{align*}
+            & \lambda = \frac{3 \cdot 36^2 + 30}{2 \cdot 571} = \frac{3918}{1142} = 132 \cdot 511^{-1} = 62 \Mod{631} \\[1ex]
+            & I_{T,T}(Q + R) = 129 - 62 \cdot 535 + (62 \cdot 36 - 571) = 170 \Mod{631} \\[1ex]
+            & V_{[2]T}(Q + R) = 535 - (62^2 - 2 \cdot 36) = 549 \Mod{631} \\[1ex]
+            & f = 1^2 \cdot \frac{170}{549} = 170 \cdot 549^{-1} = 198 \Mod{631} \\[1ex]
+            & [2]T = (617, 5) \\[1ex]
+            & T = (617, 5), \quad n_1 = 0, \text{ тому continue}
+        \end{align*}
+    \item $j = 0$, $n_0 = 1$
+        \begin{align*}
+            & \lambda = \frac{3 \cdot 617^2 + 30}{2 \cdot 5} = \frac{1142097}{10} = 618 \cdot 10^{-1} = 188 \Mod{631} \\[1ex]
+            & I_{T,T}(Q + R) = 129 - 188 \cdot 535 + (188 \cdot 617 - 5) = 396 \Mod{631} \\[1ex]
+            & V_{[2]T}(Q + R) = 535 - (188^2 - 2 \cdot 617) = 499 \Mod{631} \\[1ex]
+            & f = 198^2 \cdot \frac{396}{499} = 82 \cdot 396 \cdot 499^{-1} = 291 \cdot 435 = 385 \Mod{631} \\[1ex]
+            & [2]T = (36, 60) = -P \\[1ex]
+            & T = (36, 60), \quad n_0 = 1, \text{ тому:} \\[1ex]
+            & \textbf{Особливий випадок: } T + P = \mathcal{O} \text{ (точка на нескінченності)} \\[1ex]
+            & I_{T,P}(Q + R) = x_{Q + R} - x_{T} = 535 - 36 = 499 \Mod{631} \quad \text{(вертикальна лінія)} \\[1ex]
+            & V_{T+P}(Q + R) = 1 \quad \text{ (для точки $\mathcal{O}$ покладають таке)} \\[1ex]
+            & f = 385 \cdot \frac{499}{1} = 385 \cdot 499 = 291 \Mod{631}
+        \end{align*}
+\end{enumerate}
+
+\textbf{Результат:} $f_{5,P}(Q + R) = 291$
+
+\newpage
+\noindent\textbf{\textit{Обчислимо $f_{5,P}(R)$}}
+
+Вхідні дані:
+$D = R = (0, 36)$, $a = 30$, $\mathrm{mod} = 631$;
+
+Ініціалізація:
+$T = P = (36, 571)$, $f = 1$
+
+\begin{enumerate}[label=\textbf{Ітерація \No\arabic*.}, leftmargin=*]
+    \item $j = 1$, $n_1 = 0$
+        \begin{align*}
+            & \lambda = \frac{3 \cdot 36^2 + 30}{2 \cdot 571} = \frac{3918}{1142} = 132 \cdot 511^{-1} = 62 \Mod{631} \\[1ex]
+            & I_{T,T}(R) = 36 - 62 \cdot 0 + (62 \cdot 36 - 571) = 435 \Mod{631} \\[1ex]
+            & V_{[2]T}(R) = 0 - (62^2 - 72) = 14 \Mod{631} \\[1ex]
+            & f = 1^2 \cdot \frac{435}{14} = 435 \cdot 14^{-1} = 617 \Mod{631} \\[1ex]
+            & [2]T = (617, 5) \\[1ex]
+            & T = (617, 5), \quad n_1 = 0, \text{ тому continue}
+        \end{align*}
+    \item $j = 0$, $n_0 = 1$
+        \begin{align*}
+            & \lambda = \frac{3 \cdot 617^2 + 30}{2 \cdot 5} = \frac{1142097}{10} = 618 \cdot 10^{-1} = 188 \Mod{631} \\[1ex]
+            & I_{T,T}(R) = 36 - 188 \cdot 0 + (188 \cdot 617 - 5) = 554 \Mod{631} \\[1ex]
+            & V_{[2]T}(R) = 0 - (188^2 - 2 \cdot 617) = 595 \Mod{631} \\[1ex]
+            & f = 617^2 \cdot \frac{554}{595} = 196 \cdot 554 \cdot 595^{-1} = 52 \cdot 333 = 279 \Mod{631} \\[1ex]
+            & [2]T = (36, 60) = -P \\[1ex]
+            & T = (36, 60), \quad n_0 = 1, \text{ тому:} \\[1ex]
+            & \textbf{Особливий випадок: } T + P = \mathcal{O} \\[1ex]
+            & I_{T,P}(R) = x_{R} - x_T = 0 - 36 = 595 \Mod{631} \\[1ex]
+            & V_{T+P}(R) = 1 \\[1ex]
+            & f = 279 \cdot \frac{595}{1} = 52 \Mod{631}
+        \end{align*}
+\end{enumerate}
+
+\textbf{Результат:} $f_{5,P}(R) = 52$
+
+\newpage
+\noindent\textbf{\textit{Обчислимо $f_{5,Q}(P - R)$}}
+
+Вхідні дані:
+$P (36, 571)$, $R (0, 36)$, $D = P - R = P + (-R) = (315, 246)$, $a = 30$, $\mathrm{mod} = 631$;
+
+Ініціалізація:
+$T = Q = (420, 48)$, $f = 1$
+
+\begin{enumerate}[label=\textbf{Ітерація \No\arabic*.}, leftmargin=*]
+    \item $j = 1$, $n_1 = 0$
+        \begin{align*}
+            & \lambda = \frac{3 \cdot 420^2 + 30}{2 \cdot 48} = \frac{529230}{96} = 452 \cdot 96^{-1} = 31 \Mod{631} \\[1ex]
+            & I_{T,T}(P - R) = 246 - 31 \cdot 315 + (31 \cdot 420 - 48) = 298 \Mod{631} \\[1ex]
+            & V_{[2]T}(P - R) = 315 - (31^2 - 840) = 194 \Mod{631} \\[1ex]
+            & f = 1^2 \cdot \frac{298}{194} = 298 \cdot 194^{-1} = 587 \Mod{631} \\[1ex]
+            & [2]T = (121, 387) \\[1ex]
+            & T = (121, 387), \quad n_1 = 0, \text{ тому continue}
+        \end{align*}
+    \item $j = 0$, $n_0 = 1$
+        \begin{align*}
+            & \lambda = \frac{3 \cdot 121^2 + 30}{2 \cdot 387} = \frac{43953}{774} = 414 \cdot 143^{-1} = 250 \Mod{631} \\[1ex]
+            & I_{T,T}(P - R) = 246 - 250 \cdot 315 + (250 \cdot 121 - 387) = 577 \Mod{631} \\[1ex]
+            & V_{[2]T}(P - R) = 315 - (250^2 - 242) = 526 \Mod{631} \\[1ex]
+            & f = 587^2 \cdot \frac{577}{526} = 43 \cdot 577 \cdot 526^{-1} = 202 \cdot 6 = 581 \Mod{631} \\[1ex]
+            & [2]T = (420, 583) = -Q \\[1ex]
+            & T = (420, 583), \quad n_0 = 1, \text{ тому:} \\[1ex]
+            & \textbf{Особливий випадок: } T + Q = \mathcal{O} \\[1ex]
+            & I_{T,Q}(P - R) = x_{P - R} - x_T = 315 - 420 = 526 \Mod{631} \\[1ex]
+            & V_{T+Q}(P - R) = 1 \\[1ex]
+            & f = 581 \cdot \frac{526}{1} = 202 \Mod{631}
+        \end{align*}
+\end{enumerate}
+
+\textbf{Результат:} $f_{5,Q}(P - R) = 202$
+
+\newpage
+\noindent\textbf{\textit{Обчислимо $f_{5,Q}(-R)$}}
+
+Вхідні дані:
+$D = -R = (0, 595)$, $a = 30$, $\mathrm{mod} = 631$;
+
+Ініціалізація:
+$T = Q = (420, 48)$, $f = 1$
+
+\begin{enumerate}[label=\textbf{Ітерація \No\arabic*.}, leftmargin=*]
+    \item $j = 1$, $n_1 = 0$
+        \begin{align*}
+            & \lambda = \frac{3 \cdot 420^2 + 30}{2 \cdot 48} = \frac{529230}{96} = 452 \cdot 96^{-1} = 31 \Mod{631} \\[1ex]
+            & I_{T,T}(-R) = 595 - 31 \cdot 0 + (31 \cdot 420 - 48) = 316 \Mod{631} \\[1ex]
+            & V_{[2]T}(-R) = 0 - (31^{2} - 840) = 510 \Mod{631} \\[1ex]
+            & f = 1^2 \cdot \frac{316}{510} = 316 \cdot 510^{-1} = 352 \Mod{631} \\[1ex]
+            & [2]T = (121, 387) \\[1ex]
+            & T = (121, 387), \quad n_1 = 0, \text{ тому continue}
+        \end{align*}
+    \item $j = 0$, $n_0 = 1$
+        \begin{align*}
+            & \lambda = \frac{3 \cdot 121^2 + 30}{2 \cdot 387} = \frac{43953}{774} = 414 \cdot 143^{-1} = 250 \Mod{631} \\[1ex]
+            & I_{T,T}(-R) = 595 - 250 \cdot 0 + (250 \cdot 121 - 387) = 170 \Mod{631} \\[1ex]
+            & V_{[2]T}(-R) = 0 - (250^{2} - 774) = 211 \Mod{631} \\[1ex]
+            & f = 352^2 \cdot \frac{170}{211} = 228 \cdot 170 \cdot 211^{-1} = 269 \cdot 317 = 88 \Mod{631} \\[1ex]
+            & [2]T = (420, 583) = -Q \\[1ex]
+            & T = (420, 583), \quad n_0 = 1, \text{ тому:} \\[1ex]
+            & \textbf{Особливий випадок: } T + Q = \mathcal{O} \\[1ex]
+            & I_{T,Q}(-R) = x_D - x_T = 0 - 420 = 211 \Mod{631} \\[1ex]
+            & V_{T+Q}(-R) = 1 \\[1ex]
+            & f = 88 \cdot \frac{211}{1} = 269 \Mod{631}
+        \end{align*}
+\end{enumerate}
+
+\textbf{Результат:} $f_{5,Q}(-R) = 269$
+
+\noindent\textbf{\textit{Обчислюємо спарювання Вейля}}
+
+Спираючись на попередні обчислення:
+\begin{equation*}
+    w_5(P, Q) = \frac{f_{5,P}(Q+R)/f_{5,P}(R)}{f_{5,Q}(P-R) / f_{5,Q}(-R)} = \frac{291/52}{202/269} = 
+    \frac{291 \cdot 449}{202 \cdot 441} = \frac{42}{111} = 42 \cdot 523 = 512 \Mod{631}
+\end{equation*}
+
+\textbf{Перевірка:} $512^{5} \Mod{631} = 1 \Rightarrow$ є коренем 5 степеня з 1.
